@@ -10,20 +10,19 @@ const Game = () => {
   }
   const onClickHandle = () => {
     setButtonCount(buttonValue)
+    changeColor()
   }
 
-  useEffect(() => {
-    const timer = setTimeout({
-
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, [])
 
   const btnClick = (e) => {
-    // e.target.style = blueButtonsStyle
+    e.target.style = blueButtonsStyle
     alert(e.target.key)
   }
 
+  const changeColor = () => {
+    let arrInd = Math.floor(Math.random() * buttonCount)
+    alert(arrInd)
+  }
 
   return (
     <>
