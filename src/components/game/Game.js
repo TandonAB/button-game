@@ -3,14 +3,19 @@ import React, { useState, useEffect } from 'react'
 const Game = () => {
   const [buttonValue, setButtonValue] = useState(0)
   const [buttonCount, setButtonCount] = useState(0)
-  const [btnClass, setBtnClass] = useState('')
+  const [btnArray, setBtnArray] = useState([])
+  const [btnClass, setBtnClass] = useState('whiteButtonsStyle')
 
   const handleChange = (e) => {
     setButtonValue(e.target.value)
   }
   const onClickHandle = () => {
     setButtonCount(buttonValue)
-    changeColor()
+    for (let i = 0; i < buttonValue; i++) {
+      btnArray.push(i)
+    }
+    // changeColor()
+    console.log(btnArray)
   }
 
 
@@ -37,10 +42,7 @@ const Game = () => {
 
         <div className="row">
           {
-
-            Array.from({ length: buttonCount }, (k) => (
-              <button key={k} class={btnClass} onClick={btnClick} style={whiteButtonsStyle}>Click Me</button>
-            ))
+            btnArray.map((i, k) => <button key={i} onClick={btnClick} style={whiteButtonsStyle} >Click Me</button>)
           }
         </div>
       </div>
