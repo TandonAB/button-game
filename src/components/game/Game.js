@@ -42,7 +42,7 @@ const Game = () => {
           {
 
             Array.from({ length: buttonCount }, (k) => (
-              <button key={k} class={btnClass} onClick={btnClick} style={redButtonsStyle}>Click Me</button>
+              <button key={k} class={btnClass} onClick={btnClick} style={whiteButtonsStyle}>Click Me</button>
             ))
           }
         </div>
