@@ -20,8 +20,8 @@ const Game = () => {
   }
 
   const changeColor = () => {
-    let arrInd = Math.floor(Math.random() * buttonCount)
-    alert(arrInd)
+    let arrIndex = Math.floor(Math.random() * buttonCount)
+    alert(arrIndex)
   }
 
   return (
