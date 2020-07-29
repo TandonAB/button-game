@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const Button = () => {
+const Button = ({ color, isEnable, onClick }) => {
   return (
-    <button>
-      Click Me
+    <button
+      onClick={onClick}
+      style={{ backgroundColor: color }}
+      disabled={isEnable}
+    >
+      Click me
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
