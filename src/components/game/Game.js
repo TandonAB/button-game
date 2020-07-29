@@ -4,14 +4,12 @@ const Game = () => {
   const [buttonValue, setButtonValue] = useState(0)
   const [buttonCount, setButtonCount] = useState(0)
   const [btnClass, setBtnClass] = useState('')
-  const [btnArray, setBtnArray] = useState([])
 
   const handleChange = (e) => {
     setButtonValue(e.target.value)
   }
   const onClickHandle = () => {
     setButtonCount(buttonValue)
-    btnArray.push(<button className={btnClass} onClick={btnClick} style={redButtonsStyle}>Click Me</button>)
   }
 
   useEffect(() => {
