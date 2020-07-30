@@ -1,11 +1,11 @@
 import React from "react";
 
-const Button = ({ color, isEnable, onClick }) => {
+const Button = ({ color, isDisable, onClick }) => {
   return (
     <button
       onClick={onClick}
-      style={{ backgroundColor: color }}
-      disabled={isEnable}
+      style={{ backgroundColor: color, margin: '10px' }}
+      disabled={isDisable}
     >
       Click me
     </button>

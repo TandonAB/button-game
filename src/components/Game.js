@@ -5,17 +5,19 @@ const Game = () => {
   const [buttonValue, setButtonValue] = useState(0);
   const [buttonCount, setButtonCount] = useState(0);
   const [btnArray, setBtnArray] = useState([]);
-  const [btnClass, setBtnClass] = useState(whiteButtonsStyle);
 
   const handleChange = e => {
     setButtonValue(e.target.value);
   };
 
   const onClickHandle = () => {
-    // setBtnArray([]);
+    if (btnArray.length > 0) {
+      setBtnArray([]);
+    }
     setButtonCount(buttonValue);
-    for (let i = 0; i < buttonValue; i++) {
-      btnArray.push(i);
+    // setButtonValue(0);
+    for (let i = 0; i < buttonCount; i++) {
+      btnArray.push({ color: "white", isDisable: true });
     }
     console.log(btnArray);
   };
@@ -30,7 +32,7 @@ const Game = () => {
         <div className="row">
           <div className="col">
             <input type="text" onChange={handleChange} />
-            <button onClick={() => onClickHandle()}>Enter</button>
+            <button onClick={onClickHandle}>Enter</button>
           </div>
         </div>
         <br />
@@ -38,9 +40,9 @@ const Game = () => {
         <div className="row">
           {btnArray.map((i, k) => (
             <Button
-              key={i}
-              color="white"
-              isEnable={false}
+              key={k}
+              color={i.color}
+              isDisable={i.isDisable}
               onClick={changeColorHandle}
             />
           ))}
@@ -48,27 +50,6 @@ const Game = () => {
       </div>
     </>
   );
-};
-
-let whiteButtonsStyle = {
-  background: "#eee",
-  padding: "10px",
-  margin: "10px",
-  pointerEvents: "none",
-  cursor: "not-allowed"
-};
-let redButtonsStyle = {
-  background: "#e00",
-  padding: "10px",
-  margin: "10px"
-};
-
-let blueButtonsStyle = {
-  background: "blue",
-  padding: "10px",
-  margin: "10px",
-  pointerEvents: "none",
-  cursor: "not-allowed"
 };
 
 export default Game;
