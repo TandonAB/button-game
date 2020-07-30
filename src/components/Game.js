@@ -12,7 +12,7 @@ const Game = () => {
   const onEnterHandle = () => {
     const tmpArray = [];
     for (let i = 0; i < buttonValue; i++) {
-      tmpArray.push({ color: "red", isDisable: false, index: i });
+      tmpArray.push({ color: "white", isDisable: true, index: i, isClicked: false });
     }
     setBtnArray(tmpArray);
   };
@@ -22,12 +22,35 @@ const Game = () => {
       if (btn.index === btnIndex) {
         btn["color"] = "blue";
         btn["isDisable"] = true;
+        btn["isClicked"] = true;
       } else {
         return btn;
       }
       return btn;
     });
-    setBtnArray(newBtnArray); // set new array with modified colors
+    setBtnArray(newBtnArray);
+  };
+
+  useEffect(() => {
+    if (btnArray.length > 0) {
+      setTimeout(() => {
+        redButton()
+      }, 2000);
+    }
+  }, [btnArray])
+
+  const redButton = () => {
+    const rand = Math.floor(Math.random() * buttonValue + 1);
+    let newBtnArray = btnArray.map(btn => {
+      if (btn.index === rand && btn.isClicked === false) {
+        btn["color"] = "red";
+        btn["isDisable"] = false;
+      } else {
+        return btn;
+      }
+      return btn;
+    });
+    setBtnArray(newBtnArray);
   };
 
   return (
