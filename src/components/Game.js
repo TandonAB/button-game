@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 
 const Game = () => {
@@ -12,13 +12,22 @@ const Game = () => {
   const onEnterHandle = () => {
     const tmpArray = [];
     for (let i = 0; i < buttonValue; i++) {
-      tmpArray.push({ color: "white", isDisable: true });
+      tmpArray.push({ color: "red", isDisable: false, index: i });
     }
     setBtnArray(tmpArray);
   };
 
-  const changeColorHandle = () => {
-    alert("clicked");
+  const changeColorHandle = (btnIndex) => {
+    let newBtnArray = btnArray.map(btn => {
+      if (btn.index === btnIndex) {
+        btn["color"] = "blue";
+        btn["isDisable"] = true;
+      } else {
+        return btn;
+      }
+      return btn;
+    });
+    setBtnArray(newBtnArray); // set new array with modified colors
   };
 
   return (
@@ -38,7 +47,7 @@ const Game = () => {
               key={k}
               color={i.color}
               isDisable={i.isDisable}
-              onClick={changeColorHandle}
+              onClick={() => changeColorHandle(i.index)}
             />
           ))}
         </div>

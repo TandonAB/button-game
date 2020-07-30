@@ -4,7 +4,7 @@ const Button = ({ color, isDisable, onClick }) => {
   return (
     <button
       onClick={onClick}
-      style={{ backgroundColor: color, margin: '10px' }}
+      style={{ backgroundColor: color, margin: '10px', padding: '5px' }}
       disabled={isDisable}
     >
       Click me
