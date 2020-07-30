@@ -2,24 +2,19 @@ import React, { useState } from "react";
 import Button from "./Button";
 
 const Game = () => {
-  const [buttonValue, setButtonValue] = useState(0);
-  const [buttonCount, setButtonCount] = useState(0);
+  const [buttonValue, setButtonValue] = useState("");
   const [btnArray, setBtnArray] = useState([]);
 
   const handleChange = e => {
     setButtonValue(e.target.value);
   };
 
-  const onClickHandle = () => {
-    if (btnArray.length > 0) {
-      setBtnArray([]);
+  const onEnterHandle = () => {
+    const tmpArray = [];
+    for (let i = 0; i < buttonValue; i++) {
+      tmpArray.push({ color: "white", isDisable: true });
     }
-    setButtonCount(buttonValue);
-    // setButtonValue(0);
-    for (let i = 0; i < buttonCount; i++) {
-      btnArray.push({ color: "white", isDisable: true });
-    }
-    console.log(btnArray);
+    setBtnArray(tmpArray);
   };
 
   const changeColorHandle = () => {
@@ -31,8 +26,8 @@ const Game = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <input type="text" onChange={handleChange} />
-            <button onClick={onClickHandle}>Enter</button>
+            <input type="text" value={buttonValue} onChange={handleChange} />
+            <button onClick={onEnterHandle}>Enter</button>
           </div>
         </div>
         <br />
